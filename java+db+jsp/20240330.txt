@@ -1,0 +1,45 @@
+<자바 +  DB + JSP / CRUD 연습> !!
+
+
+1. 멤버 VO 클래스 생성
+2. VO클래스 컬렉션프레임워크로 객체생성
+3. main CRUD 함수 생성
+
+
+ => 4. 데이터베이스에 엑세스하는 오브젝트  - DAO  생성해서 메서드 넣기
+private Map<Integer, MemberVo> db = new HashMap<>();
+
+//create 
+public void insertMember(MemberVo vo){ //MemberVo 타입의 vo객체를 매개변수로 받는 인서트
+	vo.setDate(new Date()); //날짜 셋팅
+	db.put(vo.getNum(), vo); //db 컬렉션에 넣기
+
+//r (select)
+public MemberVo selectMember(int num){
+	return db.get(num);
+}
+
+public List<MemberVo> selectMemberAll(){
+	return new ArrayList<MemberVo>(db.values());	
+}
+	
+//u
+public void updateMember(MemberVo vo) {
+	db.put(vo.getNum(), vo);
+	
+}
+	
+//d
+public void deleteMember(int num) {
+	db.remove(num);
+}
+	
+public void deleteMemberAll() {
+		db.clear();
+}
+ 
+}
+
+ 
+5. main에서 Map db객체를 dao객체로 바꿔주기
+6.  
