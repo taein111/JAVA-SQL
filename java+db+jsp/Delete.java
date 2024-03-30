@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Edit {
+public class Delete {
 	public static void main(String[] args) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -20,16 +20,13 @@ public class Edit {
 			System.out.println("접속 성공!");
 			
 			StringBuffer query = new StringBuffer();
-			query.append("update \"MEMBER\" ");
-			query.append("set \"MEMBERPW\"=?, \"NICKNAME\"=? ");
+			query.append("delete from \"MEMBER\" ");
 			query.append("where \"NUM\" =?");
 			
 			System.out.println(query.toString());
 			
 			pstmt = conn.prepareStatement(query.toString()); //쿼리문 작성 2
-			pstmt.setString(1, "4321"); //파라미터 인덱스 1번에잇는 (첫번째 물음표) 2번회원 호출3
-			pstmt.setString(2, "nnnn"); 
-			pstmt.setInt(3, 4);
+			pstmt.setInt(1, 4);
 			
 			result = pstmt.executeUpdate(); //숫자를 반환한다. 4 
 			System.out.println(result + "행이 수정되었습니다.");	
